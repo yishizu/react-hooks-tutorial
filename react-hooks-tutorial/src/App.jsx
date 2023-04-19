@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import ShinCodeInfo from "./main";
 
 function App() {
   const [count, setCount] = useState(0);
   const [numbers, setNumbers] = useState([0]);
+  const shinCodeInfo = useContext(ShinCodeInfo);
+
+  useEffect(()=>{
+
+    console.log("Hello Hooks!");
+  },[count]);
   const CountClick = () => {
     setCount(count + 1);
     console.log(count);
@@ -35,6 +42,12 @@ function App() {
       <button onClick={() =>AddArray(numbers)}>+</button>
       <p>{numbers}</p>
       <button onClick={() =>ArrayReset()}>reset</button>
+      <hr/>
+      <h1>Use Context</h1>
+      <p>{shinCodeInfo.name}</p>
+      <p>{shinCodeInfo.age}</p>
+
+
     </div>
   );
 }
